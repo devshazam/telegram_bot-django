@@ -8,6 +8,7 @@ lxml==5.2.2
 num2words==0.5.13
 pyTelegramBotAPI==4.20.0
 python-docx==1.1.2
+python-dotenv==1.0.1
 requests==2.32.3
 sqlparse==0.5.0
 typing_extensions==4.12.2
