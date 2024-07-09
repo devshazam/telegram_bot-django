@@ -113,7 +113,7 @@ def word_generate(clientArray):
 
 
 
-    p = document.add_paragraph(f'Сумма прописью: {num2words(i1, lang='ru')}  00коп. Без НДС.')
+    p = document.add_paragraph(f"Сумма прописью: {num2words(i1, lang='ru')} руб., 00коп. Без НДС.")
     paragraph_format = p.paragraph_format
     paragraph_format.line_spacing = 1.5
     p = document.add_paragraph('')
