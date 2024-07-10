@@ -26,49 +26,55 @@ bot = telebot.TeleBot(API_TOKEN)
 @bot.message_handler(commands=['start'])
 def clientId(message):
     # cid = m.chat.id
-    global clientArray 
-    clientArray = [ 0 , []] 
-    mesg = bot.send_message(message.chat.id,'Введите id клиента:')
-    bot.register_next_step_handler(mesg, loop1)
-
-
+    try:
+        global clientArray 
+        clientArray = [ 0 , []] 
+        mesg = bot.send_message(message.chat.id,'Введите id клиента:')
+        bot.register_next_step_handler(mesg, loop1)
+    except Exception as e:      # works on python 3.x
+        print('Failed 1: %s', repr(e))
 def loop1(message):
-
-    clientArray[0] = message.text
-    # bot.send_message(message.chat.id, message.text)
-    mesg = bot.send_message(message.chat.id,'Введите наименование товара')
-    bot.register_next_step_handler(mesg,loopGoods1)
-
+    try:
+        clientArray[0] = message.text
+        # bot.send_message(message.chat.id, message.text)
+        mesg = bot.send_message(message.chat.id,'Введите наименование товара')
+        bot.register_next_step_handler(mesg,loopGoods1)
+    except Exception as e:      # works on python 3.x
+        print('Failed 2: %s', repr(e))
 def loopGoods1(message):
+    try:
+        clientArray[1].append([])
+        clientArray[1][len(clientArray[1]) - 1].append(message.text)
 
-    clientArray[1].append([])
-    clientArray[1][len(clientArray[1]) - 1].append(message.text)
-
-    mesg = bot.send_message(message.chat.id,'Введите кол-во единиц товара')
-    bot.register_next_step_handler(mesg,loopGoods2)
-
+        mesg = bot.send_message(message.chat.id,'Введите кол-во единиц товара')
+        bot.register_next_step_handler(mesg,loopGoods2)
+    except Exception as e:      # works on python 3.x
+        print('Failed 3: %s', repr(e))
 def loopGoods2(message):
+    try:
+        clientArray[1][len(clientArray[1]) - 1].append(message.text)
 
-    clientArray[1][len(clientArray[1]) - 1].append(message.text)
-
-    mesg = bot.send_message(message.chat.id,'Введите цену единицы товара')
-    bot.register_next_step_handler(mesg,loopGoods3)
-
+        mesg = bot.send_message(message.chat.id,'Введите цену единицы товара')
+        bot.register_next_step_handler(mesg,loopGoods3)
+    except Exception as e:      # works on python 3.x
+        print('Failed 4: %s', repr(e))
     
 def loopGoods3(message):
-    clientArray[1][len(clientArray[1]) - 1].append(message.text)
+    try:
+        clientArray[1][len(clientArray[1]) - 1].append(message.text)
 
-    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-    bt1 = types.KeyboardButton('Добавить товар!')
-    bt2 = types.KeyboardButton('Генероривать документ!')
-    markup.add(bt1, bt2)
-    msg = bot.send_message(message.chat.id, 'Выберите действия:',
-                           reply_markup=markup)
-    bot.register_next_step_handler(msg, switch)
-    
+        markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+        bt1 = types.KeyboardButton('Добавить товар!')
+        bt2 = types.KeyboardButton('Генероривать документ!')
+        markup.add(bt1, bt2)
+        msg = bot.send_message(message.chat.id, 'Выберите действия:',
+                            reply_markup=markup)
+        bot.register_next_step_handler(msg, switch)
+    except Exception as e:      # works on python 3.x
+        print('Failed 5: %s', repr(e))
 
 def switch(message):
-
+    try:
         chat_id = message.chat.id
 
         if message.text == 'Добавить товар!':
@@ -80,7 +86,8 @@ def switch(message):
 
         else:
             bot.send_message(message.chat.id,'Ошибка, начните заново с команды /start !')
-
+    except Exception as e:      # works on python 3.x
+        print('Failed to upload to ftp: %s', repr(e))
    
 
 
