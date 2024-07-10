@@ -1,7 +1,7 @@
 from django.db import models
 
 class Clients(models.Model):
-    name = models.TextField()
+    name = models.TextField(verbose_name='Имя')
     email = models.EmailField()
     documentNumber = models.CharField(max_length=255)
     documentDate = models.CharField(max_length=255)
