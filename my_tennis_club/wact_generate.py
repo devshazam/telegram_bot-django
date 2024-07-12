@@ -7,9 +7,9 @@ import io
 from members.models import Clients
 from num2words import num2words
 import datetime
-import locale
+# import locale
 
-locale.setlocale(locale.LC_ALL, "ru") 
+# locale.setlocale(locale.LC_ALL, "ru") 
 
 
 

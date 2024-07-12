@@ -7,8 +7,8 @@ import io
 from members.models import Clients
 from num2words import num2words
 import datetime
-import locale
-locale.setlocale(locale.LC_ALL, "ru") 
+# import locale
+# locale.setlocale(locale.LC_ALL, "ru") 
 
 
 def word_generate(clientArray, dayNumber):
