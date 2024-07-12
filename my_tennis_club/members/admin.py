@@ -1,14 +1,13 @@
 from django.contrib import admin
-from .models import Clients
+from .models import Clients, Journal
 # Register your models here.
 # admin.site.register(Clients)
 
 class ClientsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'id')
-    search_fields = ['name', 'email', 'id']
+    list_display = ('id', 'email', 'name')
+    search_fields = ['id', 'email', 'name']
 
-    def my_function(self, obj) :
-        return self.stock
-    my_function.short_description = 'This is the Column Name'
-    my_function.allow_tags = True
+
+
 admin.site.register(Clients, ClientsAdmin)
+admin.site.register(Journal)

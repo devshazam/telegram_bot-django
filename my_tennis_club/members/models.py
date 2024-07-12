@@ -17,3 +17,10 @@ class Clients(models.Model):
     ks = models.CharField(max_length=255, blank=True, verbose_name='Кор. счет')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Journal(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    number = models.IntegerField()
+
+class Errors(models.Model):
+    description = models.TextField()
