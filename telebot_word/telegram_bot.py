@@ -1,5 +1,5 @@
 import os,django
-from my_tennis_club.settings import DATABASES,INSTALLED_APPS
+from telebot_word_gen.settings import DATABASES,INSTALLED_APPS
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'my_tennis_club.settings')
 django.setup()
 import telebot
